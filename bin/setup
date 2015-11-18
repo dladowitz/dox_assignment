@@ -13,6 +13,9 @@ Dir.chdir APP_ROOT do
   system "bin/rake db:create"
   system "bin/rake db:migrate"
 
+  system "RAILS_ENV=test bin/rake db:create"
+  system "RAILS_ENV=test bin/rake db:migrate"
+
   system "bin/rake db:seed"
 
   puts "\n== Removing old logs and tempfiles =="
