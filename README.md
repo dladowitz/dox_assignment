@@ -8,12 +8,15 @@ Run `bin/setup` and then boot the app with `rails server`
 
 Run `rake test`
 
+### Styling
+
+Browse to `/components` for guidance
+
 ------------
 
 ## Assignment Instructions
 
-* If you are applying for the Senior engineering position you must complete stories 1 and 3. Otherwise complete story 1, and either 2a **or** 2b
-* See `/components` page for styling guidance
+* If you are applying for the Senior engineering position you must complete stories 1 and 3. Otherwise complete stories 1, and either 2a **or** 2b
 * Clone this repository, create a local git branch and commit your changes to said branch
 * **DO NOT PUSH TO MASTER**, **DO NOT FORK THE REPOSITORY**
 * Push branch to github
@@ -23,7 +26,7 @@ Run `rake test`
 
 ### Story 1
 ```
-Story Title: As reader I would like to search the blog so
+Story Title: As a reader I would like to search the blog so
 that I can find articles which interest me.
 
 Description: Provide a front-end UI where searches can be peformed.
