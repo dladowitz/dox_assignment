@@ -16,7 +16,7 @@ Browse to `/components` for guidance
 
 ## Assignment Instructions
 
-* If you are applying for the Senior engineering position you must complete stories 1 and 3. Otherwise complete stories 1, and either 2a **or** 2b
+* If you are applying for the Junior engineering position you must complete stories stories 1, and either 2a **or** 2b. Otherwise complete stories 1 and 3.
 * Clone this repository, create a local git branch and commit your changes to said branch
 * **DO NOT PUSH TO MASTER**, **DO NOT FORK THE REPOSITORY**
 * Push branch to github
