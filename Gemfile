@@ -30,3 +30,5 @@ group :production do
   gem 'unicorn'
   gem 'pg'
 end
+
+gem "codeclimate-test-reporter", group: :test, require: nil
