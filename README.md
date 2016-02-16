@@ -30,10 +30,10 @@ Browse to `/components` for guidance
 Story Title: As a reader I would like to search the blog so
 that I can find articles which interest me.
 
-Description: Provide a front-end UI where searches can be peformed.
+Description: Provide a front-end UI where searches can be performed.
 Using MySQL `like` is perfectly fine. Results should be shown on
 the page without a full page reload. Use an AJAX request to add
-the search results to the page. Results should be paginted with
+the search results to the page. Results should be paginated with
 5 articles per page. Pagination should also happen without a full
 page refresh. Search against article body and title.
 ```
@@ -44,7 +44,7 @@ Story Title: As a reader I would like to see search
 suggestions as I start typing my search query so that
 I can get results with less typing.
 
-Description: Provice search suggestions when I type in the search
+Description: Provide search suggestions when I type in the search
 input field. Selecting a search suggestion should perform a search
 using the suggested keywords. Search against article title.
 
@@ -69,8 +69,8 @@ results at the top.
 Description: Using a Ruby class and a simple word analyses algorithm
 assign a relevancy score to each article based on the query provided.
 Do not use a search engine library, you need to create your own algorithm.
-Incorportate this relevancy score in the sort order of the search results.
+Incorporate this relevancy score in the sort order of the search results.
 Search against article body and title. An article that contains the same
-word twice would have a relevancy store that is higher than an article
+word twice would have a relevancy score that is higher than an article
 which only contains the searched word once.
 ```
