@@ -20,7 +20,7 @@ Browse to `/components` for guidance
 * Clone this repository, create a local git branch and commit your changes to said branch.
 * **DO NOT PUSH TO MASTER**, **DO NOT FORK THE REPOSITORY**
 * Code Style Guide can be found [here](https://github.com/bbatsov/ruby-style-guide), use 2 soft-tabs.
-* * Push branch to github.
+* Push branch to github.
 * Once work is completed, create a new [Pull Request](https://github.com/doximity/blgr2/compare) between master and your branch.
 * Leave a comment on your pull request notifying `@brupm` you have completed the assignment.
 
