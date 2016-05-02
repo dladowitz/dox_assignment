@@ -67,4 +67,6 @@ Incorporate this relevancy score in the sort order of the search results.
 Search against article body and title. An article that contains the same
 word twice would have a relevancy score that is higher than an article
 which only contains the searched word once.
+
+Is your solution performant?
 ```
