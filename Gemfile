@@ -16,8 +16,9 @@ gem 'redcarpet'
 gem 'pygments.rb'
 gem 'faker'
 
-group :development, :test do
-  gem 'byebug'
+group :development,  :test do
+  # gem 'byebug' #commenting out so I can use binding.pry
+  gem 'pry-byebug'
 end
 
 group :development do

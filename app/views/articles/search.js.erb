@@ -1,9 +1,9 @@
-$('div.load.hide').removeClass('hide')
+$('#articles').html("<%= escape_javascript(render(:partial => 'search_result')) %>");
 
-// Timeout is just for show since search is fast locally
-setTimeout(
-  function()
-  {
-    $('.results.box').html("<%= escape_javascript(render(:partial => 'search_result')) %>");
-    $('div.load').addClass('hide')
-  }, 1000);
+// $('div.load.hide').removeClass('hide')
+// // Timeout is just for show since search is fast locally
+// setTimeout(
+//   function()
+//   {
+//     $('div.load').addClass('hide')
+//   }, 1000);

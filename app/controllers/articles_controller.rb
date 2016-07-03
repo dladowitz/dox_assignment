@@ -5,7 +5,14 @@ class ArticlesController < ApplicationController
     @featured_article = Article.featured.limit(1).first
     @articles = Article.published.where.not(id: @featured_article).
       paginate(page: params[:page], per_page: 5)
-      puts "hitting index action"
+
+      puts "Page: #{params[:page]} >>>>>>>>>>>>>>>>>>>>>>>"
+      # binding.pry
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def show
