@@ -37,15 +37,16 @@
     .col-1-4
       .search
         | Search Articles
-        = form_for "", url: '#' do |form|
+        = form_tag "/search", method: :post, remote: true do
           p
-            = form.text_field :title
-            = form.submit :search
+            = text_field_tag :title
+            = submit_tag :search
 
           div.load.hide
 
-          .results.box.hide
+          .results.box
             | No Results
+            
 .row
   .section
     = will_paginate

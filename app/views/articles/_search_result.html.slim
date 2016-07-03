@@ -1,0 +1,8 @@
+- if @search_results.any?
+  .ul
+    - @search_results.each do |result|
+      hr
+      .li
+        = link_to result.title, article_path(result)
+- else
+  .li No Matching Articles

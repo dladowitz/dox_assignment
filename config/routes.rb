@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   get 'components' => 'components#components', as: :components
   get 'admin' => 'administrator/articles#index', as: :admin
-
+  post 'search' => 'articles#search', as: :search
+  
   namespace :administrator do
     resources :authors
     resources :articles, except: :show
