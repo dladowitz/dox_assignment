@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'admin' => 'administrator/articles#index', as: :admin
   post 'search' => 'articles#search', as: :search
   get 'search' => 'articles#search'
+  get 'autocomplete_article_title' => 'articles#autocomplete_article_title', as: :autocomplete_article_title
 
   namespace :administrator do
     resources :authors

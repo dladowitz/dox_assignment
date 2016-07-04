@@ -1,5 +1,7 @@
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
+#= require autocomplete-rails
 #= require_tree .
 
 $ ->
@@ -42,4 +44,3 @@ $ ->
       $(".header").removeClass("nav-up").addClass("nav-down") if st + $(window).height() < $(document).height()
     lastScrollTop = st
     return
-

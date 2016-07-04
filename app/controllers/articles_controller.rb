@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :load_article, only: :show
+  autocomplete :article, :title, :full => true
 
   def index
     @featured_article = Article.featured.limit(1).first
@@ -11,6 +12,10 @@ class ArticlesController < ApplicationController
         format.js
       end
   end
+
+  # def autocomplete
+  #   puts "Hitting autocomplete action..................."
+  # end
 
   def show
   end

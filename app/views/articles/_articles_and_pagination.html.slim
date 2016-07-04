@@ -18,9 +18,10 @@
     .col-1-4
       .search
         | Search Articles
-        = form_tag "/search", method: :post, remote: true do
+        = form_tag "/search", method: :post, id: "search-form", remote: true do
           p
-            = text_field_tag :title
+            = autocomplete_field_tag 'title', '', autocomplete_article_title_path, :size => 75
+            / = text_field_tag :title
             = submit_tag :search
 
           div.load.hide
@@ -38,5 +39,10 @@ javascript:
     $(".pagination").on("click", "a", function () {
       $.get(this.href, null, null, "script");
       return false;
+    });
+    
+    $('#title').bind('railsAutocomplete.select', function(event, data){
+      console.log("Firing here")
+      $('#search-form').submit()
     });
   });
