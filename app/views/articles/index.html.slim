@@ -16,15 +16,8 @@
       = @featured_article.author.name
 
 = render 'layouts/hero_asset'
+
 #articles-and-pagination
   = render 'articles_and_pagination'
     
     
-javascript:
-
-  $(function () {
-    $('.pagination a').click(function () {
-        $.get(this.href, null, null, 'script');
-        return false;
-    });
-  });

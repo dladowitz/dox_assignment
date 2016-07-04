@@ -6,9 +6,6 @@ class ArticlesController < ApplicationController
     @articles = Article.published.where.not(id: @featured_article).
       paginate(page: params[:page], per_page: 5)
 
-      puts "Page: #{params[:page]} >>>>>>>>>>>>>>>>>>>>>>>"
-      # binding.pry
-
       respond_to do |format|
         format.html
         format.js
@@ -24,10 +21,10 @@ class ArticlesController < ApplicationController
   def search
     puts "You're searching for: #{params[:title]}"
     search_term = params[:title]
-    @search_results = Article.where("title LIKE ? OR body LIKE ?", "%#{search_term}%", "%#{search_term}%")
+    @articles = Article.where("title LIKE ? OR body LIKE ?", "%#{search_term}%", "%#{search_term}%").paginate(page: params[:page], per_page: 5)
 
     respond_to do |format|
-      format.js { }
+      format.js { render "index" }
     end
   end
 end

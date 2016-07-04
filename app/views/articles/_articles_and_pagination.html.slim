@@ -31,3 +31,12 @@
 .row
   .section
     = will_paginate
+
+/ If I had more javascript than this I'd move to a seperate file    
+javascript:
+  $(function () {
+    $(".pagination").on("click", "a", function () {
+      $.get(this.href, null, null, "script");
+      return false;
+    });
+  });
