@@ -17,6 +17,7 @@ gem 'friendly_id'
 gem 'redcarpet'
 gem 'pygments.rb'
 gem 'faker'
+gem 'rack-mini-profiler'
 
 group :development,  :test do
   # gem 'byebug' #commenting out so I can use binding.pry

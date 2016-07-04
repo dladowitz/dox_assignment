@@ -98,6 +98,8 @@ GEM
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
     rack (1.6.4)
+    rack-mini-profiler (0.10.1)
+      rack (>= 1.2.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -199,6 +201,7 @@ DEPENDENCIES
   pg
   pry-byebug
   pygments.rb
+  rack-mini-profiler
   rails (= 4.2.4)
   rails4-autocomplete
   rails_12factor
