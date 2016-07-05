@@ -19,16 +19,25 @@ class Search < ActiveRecord::Base
 
   def self.get_term_count(article, term)
     term_count = {count: 0, article_id: article.id}
-    words = article.body.downcase.split " "
 
+    body_words = article.body.downcase.split " "
+    term_count = get_weighted_count(body_words, 1, term_count, term)
+
+    title_words = article.title.downcase.split " "
+    term_count = get_weighted_count(title_words, 5, term_count, term)
+
+    puts "Term Count: #{term_count}" if @debug
+    return term_count
+  end
+
+  def self.get_weighted_count(words, weighting, term_count, search_term)
     words.each do |word|
-      if word == term
-        term_count[:count] += 1
+      if word == search_term
+        term_count[:count] += weighting
         puts "Word: #{word}, Count: #{term_count[:count]}" if @debug
       end
     end
 
-    puts "Term Count: #{term_count}" if @debug
     return term_count
   end
 

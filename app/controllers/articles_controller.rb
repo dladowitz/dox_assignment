@@ -13,10 +13,6 @@ class ArticlesController < ApplicationController
       end
   end
 
-  # def autocomplete
-  #   puts "Hitting autocomplete action..................."
-  # end
-
   def show
   end
 
@@ -26,8 +22,9 @@ class ArticlesController < ApplicationController
   def search
     puts "You're searching for: #{params[:title]}"
     search_term = params[:title]
-    @articles = Article.where("title LIKE ? OR body LIKE ?", "%#{search_term}%", "%#{search_term}%").paginate(page: params[:page], per_page: 5)
 
+    @articles = Article.where("title LIKE ? OR body LIKE ?", "%#{search_term}%", "%#{search_term}%").paginate(page: params[:page], per_page: 5)
+    # @articles = Search.find_relevant_articles(search_term).paginate(page: params[:page], per_page: 5)
     respond_to do |format|
       format.js { render "index" }
     end

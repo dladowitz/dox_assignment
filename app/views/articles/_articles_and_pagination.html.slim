@@ -1,19 +1,32 @@
 .row
   .section
     .col-3-4
-      - @articles.each do |article|
-        .article
-          - if img = article.hero_image_name.presence
-            = link_to article_path(article) do
-              - img = "heroes/#{img}"
-              .hero-secondary style='background-image: url("#{asset_path(img)}")'
-                h1 = article.title
-          p.article-body
-            = markdown(article.body || 'No content')
-          p.meta
-            = article.created_at.strftime("%b %d, %Y")
-            span.stick<> |
-            = article.author.name
+      - if @articles.empty?
+        h2 No Articles Matched Search Terms. Use full words.
+      - else
+        - @articles.each do |article_or_hash|
+          / hmmm, don't really like this. Should move out to
+          / a helper or use a seperate template for index and search
+          - if article_or_hash.is_a? Hash
+            - article = Article.find(article_or_hash[:article_id])
+            - score = article_or_hash[:count]
+          - else
+            - article = article_or_hash
+            
+          .article
+            - if img = article.hero_image_name.presence
+              = link_to article_path(article) do
+                - img = "heroes/#{img}"
+                .hero-secondary style='background-image: url("#{asset_path(img)}")'
+                  - if score
+                    h3.relevancy= "Relevancy: #{score}"
+                  h1 = article.title
+            p.article-body
+              = markdown(article.body || 'No content')
+            p.meta
+              = article.created_at.strftime("%b %d, %Y")
+              span.stick<> |
+              = article.author.name
         hr
     .col-1-4
       .search
