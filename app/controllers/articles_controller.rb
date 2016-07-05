@@ -20,7 +20,6 @@ class ArticlesController < ApplicationController
   # but in this case I think it's better to use a new action than build a
   # whole controller. Some people would disagree.
   def search
-    puts "You're searching for: #{params[:title]}"
     @search_term = params[:title]
 
     article = Article.find_by_title(@search_term)
