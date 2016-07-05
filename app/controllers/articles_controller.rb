@@ -21,10 +21,15 @@ class ArticlesController < ApplicationController
   # whole controller. Some people would disagree.
   def search
     puts "You're searching for: #{params[:title]}"
-    search_term = params[:title]
+    @search_term = params[:title]
 
-    @articles = Article.where("title LIKE ? OR body LIKE ?", "%#{search_term}%", "%#{search_term}%").paginate(page: params[:page], per_page: 5)
-    # @articles = Search.find_relevant_articles(search_term).paginate(page: params[:page], per_page: 5)
+    article = Article.find_by_title(@search_term)
+    if article
+      @articles = [article].paginate(page: params[:page], per_page: 5) #Only paginating cause it breaks the template. Should fix.
+    else
+      @articles = Search.find_relevant_articles(@search_term).paginate(page: params[:page], per_page: 5)
+    end
+
     respond_to do |format|
       format.js { render "index" }
     end

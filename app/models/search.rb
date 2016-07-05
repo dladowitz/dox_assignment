@@ -17,9 +17,12 @@ class Search < ActiveRecord::Base
     return @relevancy_list
   end
 
+  private
+
   def self.get_term_count(article, term)
     term_count = {count: 0, article_id: article.id}
 
+    # Words in the title are weighted 5 times heavier than words in the body
     body_words = article.body.downcase.split " "
     term_count = get_weighted_count(body_words, 1, term_count, term)
 
@@ -43,13 +46,15 @@ class Search < ActiveRecord::Base
 
   def self.add_term_count_to_relvancy_list(unsorted_term_count)
     puts "Unsorted Term Count: #{unsorted_term_count}" if @debug
-    # puts "@relevancy_list: #{@relevancy_list}" if @debug
 
     return @relevancy_list << unsorted_term_count if @relevancy_list.empty?
 
     @relevancy_list.each_with_index do |sorted_term_count, index|
       if sorted_term_count[:count] >= unsorted_term_count[:count]
-        # puts "Sorted Term Count Larger: #{sorted_term_count[:count]}" if @debug
+        puts "Sorted Term Count Larger: #{sorted_term_count[:count]}" if @debug
+        if index == @relevancy_list.length - 1
+          return @relevancy_list << unsorted_term_count
+        end
       else
         puts "Sorted Term Count Smaller or Eq: #{sorted_term_count[:count]}" if @debug
         last_sorted_items = @relevancy_list[index..-1]
@@ -62,6 +67,5 @@ class Search < ActiveRecord::Base
         return
       end
     end
-
   end
 end

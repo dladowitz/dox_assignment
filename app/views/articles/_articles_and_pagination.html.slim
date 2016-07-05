@@ -5,14 +5,9 @@
         h2 No Articles Matched Search Terms. Use full words.
       - else
         - @articles.each do |article_or_hash|
-          / hmmm, don't really like this. Should move out to
-          / a helper or use a seperate template for index and search
-          - if article_or_hash.is_a? Hash
-            - article = Article.find(article_or_hash[:article_id])
-            - score = article_or_hash[:count]
-          - else
-            - article = article_or_hash
-            
+          
+          - article, score = convert_article_or_hash(article_or_hash)
+    
           .article
             - if img = article.hero_image_name.presence
               = link_to article_path(article) do
@@ -26,7 +21,7 @@
             p.meta
               = article.created_at.strftime("%b %d, %Y")
               span.stick<> |
-              = article.author.name
+              = article.author.name if article.author
         hr
     .col-1-4
       .search
@@ -34,14 +29,35 @@
         = form_tag "/search", method: :post, id: "search-form", remote: true do
           p
             = autocomplete_field_tag 'title', '', autocomplete_article_title_path, :size => 75
-            / = text_field_tag :title
             = submit_tag :search
 
           div.load.hide
 
           .results.box.hide
             | No Results
-
 .row
   .section
     = will_paginate
+
+
+/ Ideally this would be moved to javascripts/articles.js, but I'm having an issue
+/ accessing the instance variable @search term there
+javascript: 
+  $(function () {
+    if("#{@search_term}"){
+      anchors = $(".pagination a")
+      anchors.each(function(){
+        var href = $(this).attr('href');
+        $(this).attr('href', href + "&title=#{@search_term}")
+      })
+    }
+
+    $(".pagination").on("click", "a", function () {
+      $.get(this.href, null, null, "script");
+      return false;
+    });
+
+    $('#title').bind('railsAutocomplete.select', function(event, data){
+      $('#search-form').submit()
+    });
+  });

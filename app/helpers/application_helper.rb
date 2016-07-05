@@ -1,4 +1,15 @@
 module ApplicationHelper
+  def convert_article_or_hash(article_or_hash)
+    if article_or_hash.is_a? Hash
+      article = Article.find(article_or_hash[:article_id])
+      score = article_or_hash[:count]
+    else
+      article = article_or_hash
+      score = nil
+    end
+    return article, score
+  end
+
   def markdown(text)
     renderer = HtmlWithPygments.new(hard_wrap: true, filter_html: false)
     Redcarpet::Markdown.new(renderer, markdown_options.merge(footnotes: true)).render(text).html_safe
